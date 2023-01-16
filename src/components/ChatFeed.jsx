@@ -48,7 +48,7 @@ const ChatFeed = (props) => {
             {renderMessages()}
             <div style={{ height: '100px' }} />
             <div className="message-form-container">
-                <MessageForm {...props} chatId={activeChat}/>
+                <MessageForm {...props} chatId={activeChat} />
             </div>
         </div>
     );
