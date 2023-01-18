@@ -7,6 +7,19 @@ const ChatFeed = (props) => {
 
     const chat = chats && chats[activeChat]; //if chats exists, find the active chat
 
+    const renderReadReceipts = (message, isMyMessage) => {
+        return chat.people.map((person, index) => person.last_read === message.id && (//the code here is going to render only when the person has read the message
+            <div
+                key={`read_${index}`}
+                className="read-receipt"
+                style={{
+                    float: 'right',
+                    backgroundImage: `url(${person?.person?.avatar})`
+                }}
+            />
+        ));
+    };
+
     const renderMessages = () => {
         const keys = Object.keys(messages);
         return keys.map((key, index) => {
@@ -19,12 +32,12 @@ const ChatFeed = (props) => {
                     <div className="message-block">
                         {
                             isMyMessage
-                                ? <MyMessage message={message}/>
-                                : <TheirMessage message={message} lastMessage={messages[lastMessageKey]}/>
+                                ? <MyMessage message={message} />
+                                : <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />
                         }
                     </div>
                     <div className="read-receipts" style={{ marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px' }}>
-                        read-receipts
+                        {renderReadReceipts(message, isMyMessage)}
                     </div>
                 </div >
             );
