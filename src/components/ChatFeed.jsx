@@ -14,7 +14,7 @@ const ChatFeed = (props) => {
                 className="read-receipt"
                 style={{
                     float: 'right',
-                    backgroundImage: `url(${person?.person?.avatar})`
+                    backgroundImage: `url(${person.person.avatar})`
                 }}
             />
         ));
