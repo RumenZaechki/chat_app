@@ -15,6 +15,7 @@ const LoginForm = () => {
             localStorage.setItem('username', username);
             localStorage.setItem('password', password);
             window.location.reload();
+            setError('');
         } catch (error) {
             setError('Something went wrong, would you kindly try again?');
         }
@@ -32,8 +33,8 @@ const LoginForm = () => {
                             <span>Would you kindly start chatting?</span>
                         </button>
                     </div>
-                    <h2 className="error">{error}</h2>
                 </form>
+                <h2 className="error">{error}</h2>
             </div>
         </div>
     );
